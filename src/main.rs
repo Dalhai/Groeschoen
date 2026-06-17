@@ -1,3 +1,5 @@
+mod account;
+
 use anyhow::Result;
 use ratatui::{
     DefaultTerminal, Frame,
