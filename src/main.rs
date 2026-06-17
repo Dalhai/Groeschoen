@@ -24,10 +24,14 @@ struct App {
 
 impl App {
     fn new() -> Result<Self> {
+        let mut transactions = import::actual::load_sample_transactions()?;
+        // Newest transactions first.
+        transactions.sort_by_key(|t| std::cmp::Reverse(t.date));
+
         Ok(Self {
             account: Account {
                 name: "Checking".to_string(),
-                transactions: import::actual::load_sample_transactions()?,
+                transactions,
             },
             table_state: TableState::default().with_selected(Some(0)),
         })
