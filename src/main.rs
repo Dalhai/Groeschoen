@@ -23,21 +23,23 @@ impl App {
             account: Account {
                 name: "Checking".to_string(),
                 balance: 0.0,
-                transactions: load_sample_transaction(),
+                transactions: load_sample_transactions(),
             },
         }
     }
 }
 
 /// Returns a set of sample transactions to populate the app with. Empty for now.
-fn load_sample_transaction() -> Vec<Transaction> {
+fn load_sample_transactions() -> Vec<Transaction> {
     Vec::new()
 }
 
 fn main() -> Result<()> {
     let app = App::new();
+
     let mut terminal = ratatui::init();
     let result = run(&mut terminal, &app);
+
     ratatui::restore();
     result
 }
@@ -59,9 +61,11 @@ fn run(terminal: &mut DefaultTerminal, app: &App) -> Result<()> {
 
 /// Render the title bar, the left sidebar and the main working area.
 fn draw(frame: &mut Frame, app: &App) {
+    // Split the screen into a title bar and a body
     let [title_area, body_area] =
         Layout::vertical([Constraint::Length(3), Constraint::Min(0)]).areas(frame.area());
 
+    // Split the body into a left sidebar and a main area
     let [sidebar_area, main_area] =
         Layout::horizontal([Constraint::Length(28), Constraint::Min(0)]).areas(body_area);
 
@@ -72,14 +76,10 @@ fn draw(frame: &mut Frame, app: &App) {
 
     let account = &app.account;
 
-    let sidebar = Paragraph::new(account.name.as_str()).block(Block::bordered().title("Accounts"));
+    let sidebar =
+        Paragraph::new(account.name.as_str()).block(Block::bordered().title("Accounts".bold()));
     frame.render_widget(sidebar, sidebar_area);
 
-    let workspace = Paragraph::new(format!(
-        "Balance: {:.2}\nTransactions: {}\n\nPress q to quit",
-        account.balance,
-        account.transactions.len(),
-    ))
-    .block(Block::bordered().title("Workspace"));
+    let workspace = Paragraph::new("Nothing").block(Block::bordered().title("Workspace".bold()));
     frame.render_widget(workspace, main_area);
 }
