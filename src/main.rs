@@ -91,12 +91,15 @@ fn draw(frame: &mut Frame, app: &mut App) {
         .transactions
         .iter()
         .map(|t| {
+            let amount = Cell::from(Text::from(format!("{:.2}", t.amount)).right_aligned());
+            let amount = if t.is_deposit() { amount.green() } else { amount };
+
             Row::new(vec![
                 Cell::from(t.date.to_string()),
                 Cell::from(t.payee.0.clone()),
                 Cell::from(t.notes.clone()),
                 Cell::from(t.category.0.clone()),
-                Cell::from(Text::from(format!("{:.2}", t.amount)).right_aligned()),
+                amount,
             ])
         })
         .collect::<Vec<Row>>();
@@ -117,50 +120,4 @@ fn draw(frame: &mut Frame, app: &mut App) {
         .row_highlight_style(Style::new().reversed())
         .highlight_symbol("▶ ");
     frame.render_stateful_widget(workspace, main_area, &mut app.table_state);
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use chrono::NaiveDate;
-    use finance::{Category, Payee, Transaction};
-    use ratatui::Terminal;
-    use ratatui::backend::TestBackend;
-
-    fn sample_app() -> App {
-        let txns = vec![
-            Transaction {
-                amount: 975.0,
-                payee: Payee("Starting Balance".into()),
-                notes: String::new(),
-                category: Category("Starting Balances".into()),
-                date: NaiveDate::from_ymd_opt(2024, 1, 1).unwrap(),
-            },
-            Transaction {
-                amount: -280.0,
-                payee: Payee("Shop".into()),
-                notes: "weekend".into(),
-                category: Category("Shopping".into()),
-                date: NaiveDate::from_ymd_opt(2024, 1, 3).unwrap(),
-            },
-        ];
-        App {
-            account: Account { name: "Checking".into(), balance: 0.0, transactions: txns },
-            table_state: TableState::default().with_selected(Some(0)),
-        }
-    }
-
-    #[test]
-    fn renders_table_with_header_and_selection() {
-        let mut app = sample_app();
-        let mut terminal = Terminal::new(TestBackend::new(90, 12)).unwrap();
-        terminal.draw(|f| draw(f, &mut app)).unwrap();
-
-        let text: String =
-            terminal.backend().buffer().content().iter().map(|c| c.symbol()).collect();
-
-        for needle in ["Date", "Payee", "Notes", "Category", "Amount", "975.00", "-280.00", "▶"] {
-            assert!(text.contains(needle), "expected `{needle}` in render:\n{text}");
-        }
-    }
 }

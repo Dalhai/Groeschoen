@@ -33,3 +33,13 @@ pub struct Transaction {
     /// Date of the transaction
     pub date: chrono::NaiveDate,
 }
+
+impl Transaction {
+    pub fn is_deposit(&self) -> bool {
+        self.amount > 0.0
+    }
+
+    pub fn is_withdrawal(&self) -> bool {
+        self.amount < 0.0
+    }
+}
