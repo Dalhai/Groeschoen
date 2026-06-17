@@ -27,7 +27,6 @@ impl App {
         Ok(Self {
             account: Account {
                 name: "Checking".to_string(),
-                balance: 0.0,
                 transactions: import::actual::load_sample_transactions()?,
             },
             table_state: TableState::default().with_selected(Some(0)),
@@ -81,9 +80,15 @@ fn draw(frame: &mut Frame, app: &mut App) {
 
     let account = &app.account;
 
-    let sidebar =
-        Paragraph::new(account.name.as_str()).block(Block::bordered().title("Accounts".bold()));
-    frame.render_widget(sidebar, sidebar_area);
+    let accounts_block = Block::bordered().title("Accounts".bold());
+    let accounts_inner = accounts_block.inner(sidebar_area);
+    frame.render_widget(accounts_block, sidebar_area);
+
+    frame.render_widget(Paragraph::new(account.name.as_str()), accounts_inner);
+    frame.render_widget(
+        Paragraph::new(format!("{:.2}", account.balance())).right_aligned(),
+        accounts_inner,
+    );
 
     let header = Row::new(vec!["Date", "Payee", "Notes", "Category", "Amount"]).bold();
 

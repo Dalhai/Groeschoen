@@ -3,11 +3,15 @@ pub struct Account {
     /// Human-readable name of the account.
     pub name: String,
 
-    /// Current balance. A plain number, no currency attached.
-    pub balance: f64,
-
     /// List of transactions associated with this account.
     pub transactions: Vec<Transaction>,
+}
+
+impl Account {
+    /// Current balance of the account, calculated as the sum of all transactions.
+    pub fn balance(&self) -> f64 {
+        self.transactions.iter().map(|t| t.amount).sum()
+    }
 }
 
 #[derive(Debug, Clone, PartialEq)]
