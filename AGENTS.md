@@ -42,10 +42,10 @@
 
 ## Commits
 
-- Make sure you're on a new branch, split from `dev` whenever you start working on a new feature.
+- Make sure you're on a new branch, split from `develop` whenever you start working on a new feature.
 - Commit your work as you go without waiting for explicit user approval. Committing is the default expectation, not something to pause and ask permission for — just keep the commits fine-grained and well-described.
-- You may open a pull request against `dev` at any time, as long as the branch is based on `dev`. You don't need to wait for explicit approval to open a PR — opening one is the expected way to surface work for review and merge.
-- Always target `dev` as the base branch for pull requests.
+- You may open a pull request against `develop` at any time, as long as the branch is based on `develop`. You don't need to wait for explicit approval to open a PR — opening one is the expected way to surface work for review and merge.
+- Always target `develop` as the base branch for pull requests.
 - Make fine-granular commits during your work, whenever you feel like you've made a change that warrants a commit.
 - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for all commit messages.
 - Structure messages as `<type>[optional scope]: <description>`, followed by an optional body and optional footer.
