@@ -33,4 +33,3 @@ pub struct Transaction {
     /// Date of the transaction
     pub date: chrono::NaiveDate,
 }
-
