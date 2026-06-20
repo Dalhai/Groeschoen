@@ -14,6 +14,7 @@ exec(
   "issue#{issue}",
   "--permission-mode",
   "auto",
+  "/superpowers:using-superpowers\n\n" \
   "Let's work on issue #{issue}.\n" \
   "1. Create a fresh branch off of a newly fetched origin/dev.\n" \
   "2. Make fine grained commits along the way.\n" \
