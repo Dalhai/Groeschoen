@@ -77,7 +77,7 @@ fn draw(frame: &mut Frame, app: &mut App) {
     let [sidebar_area, main_area] =
         Layout::horizontal([Constraint::Length(28), Constraint::Min(0)]).areas(body_area);
 
-    let title = Paragraph::new("Working Poor".bold())
+    let title = Paragraph::new("Gröschön".bold())
         .centered()
         .block(Block::bordered());
     frame.render_widget(title, title_area);

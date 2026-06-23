@@ -1,6 +1,6 @@
 # Ratatui reference
 
-Working Poor uses [ratatui](https://ratatui.rs/) for its terminal UI. Keep these
+Gröschön uses [ratatui](https://ratatui.rs/) for its terminal UI. Keep these
 handy when working on anything UI-related:
 
 - API docs: https://docs.rs/ratatui/latest/ratatui/
