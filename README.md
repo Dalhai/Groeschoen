@@ -84,3 +84,9 @@ cargo run        # launch the app
 ```
 
 Contributions follow [Conventional Commits](https://www.conventionalcommits.org/).
+
+## License
+
+Gröschön is licensed under the GNU Lesser General Public License, version 3 or
+later (LGPL-3.0-or-later). See [`COPYING.LESSER`](COPYING.LESSER) for the LGPL
+terms and [`COPYING`](COPYING) for the GPL terms it builds upon.
