@@ -37,7 +37,7 @@ much it restates a source of truth, so keep each kind small and in its lane.
 
 ## Structure
 
-- Workingpoor is a Rust terminal application built on `ratatui`.
+- Gröschön is a Rust terminal application built on `ratatui`.
 - Do not scaffold or initialize the application unless explicitly asked.
 - Keep project structure and naming aligned with Rust/Cargo conventions.
 

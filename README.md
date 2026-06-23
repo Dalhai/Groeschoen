@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Working Poor — budgeting in your terminal" width="100%" />
+<img src="assets/banner.svg" alt="Gröschön — budgeting in your terminal" width="100%" />
 
-# Working Poor
+# Gröschön
 
 **A keyboard-driven budgeting application that lives in your terminal.**
 
@@ -14,12 +14,12 @@
 
 ---
 
-Working Poor is a personal-finance companion for people who would rather stay on
-the command line than open another web dashboard. It reads your accounts and
-transactions, organises them into **categories**, tracks progress toward
-**goals**, applies **rules** to keep your ledger tidy, and surfaces
-**statistics** so you always know where the money went — all without leaving the
-terminal.
+Gröschön — named for the humble *Groschen*, the coin you actually count — is a
+personal-finance companion for people who would rather stay on the command line
+than open another web dashboard. It reads your accounts and transactions,
+organises them into **categories**, tracks progress toward **goals**, applies
+**rules** to keep your ledger tidy, and surfaces **statistics** so you always
+know where the money went — all without leaving the terminal.
 
 ## Features
 
@@ -35,7 +35,7 @@ terminal.
 - **CSV import** — Bring in history from existing tools via the
   [Actual](https://actualbudget.org/) export format.
 
-> **Status:** Working Poor is in early development. Account browsing, the
+> **Status:** Gröschön is in early development. Account browsing, the
 > transaction table, balances, and Actual CSV import are in place today;
 > categories, goals, rules, and statistics are actively being built out.
 
@@ -61,7 +61,7 @@ cargo run
 
 ## Importing data
 
-Working Poor currently reads exports in the
+Gröschön currently reads exports in the
 [Actual](https://actualbudget.org/) CSV format. During development it loads a
 sample export from `dev/sample_transactions_actual.csv`; the importer maps the
 CSV columns onto the internal finance model and keeps the two decoupled so the
